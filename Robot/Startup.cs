@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SimpleGPIO.Boards;
@@ -20,12 +19,14 @@ namespace Robot.API
         {
             services.AddMvc();
             services.AddSingleton<RaspberryPi>();
-            services.AddSingleton<Robot, PiRobot>();
+            services.AddSingleton<IRobot, PiRobot>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.UseMvc();
         }
     }

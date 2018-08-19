@@ -1,45 +1,34 @@
 ﻿using System;
 using SimpleGPIO.Boards;
+using SimpleGPIO.GPIO;
 
 namespace Robot.API
 {
-    public class PiRobot : Robot
+    public class PiRobot : IRobot
     {
-        private readonly RaspberryPi _pi;
+        private readonly IPinInterface _driveMotor;
+        private readonly IPinInterface _flagMotor;
+        private readonly IPinInterface _buzzer;
 
         public PiRobot(RaspberryPi pi)
         {
-            _pi = pi;
+            _driveMotor = pi.Pin13;
+            _flagMotor = pi.Pin15;
+            _buzzer = pi.Pin40;
+
+            var motorDriver = pi.Pin11;
+            motorDriver.TurnOn();
         }
 
-        public void GoForward()
-        {
-            throw new NotImplementedException();
-        }
+        public void GoForward() => _driveMotor.TurnOnFor(TimeSpan.FromSeconds(1));
 
-        public void GoBackward()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SpinFlag()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void TurnLightOn()
-        {
-            _pi.Pin16.TurnOn();
-        }
-
-        public void TurnLightOff()
-        {
-            _pi.Pin16.TurnOff();
-        }
+        public void SpinFlag() => _flagMotor.TurnOnFor(TimeSpan.FromSeconds(1));
 
         public void Beep()
         {
-            throw new NotImplementedException();
+            _buzzer.TurnOnFor(TimeSpan.FromSeconds(0.1));
+            _buzzer.TurnOffFor(TimeSpan.FromSeconds(0.1));
+            _buzzer.TurnOnFor(TimeSpan.FromSeconds(0.3));
         }
     }
 }
