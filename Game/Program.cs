@@ -1,15 +1,18 @@
-﻿using SimpleGPIO.Boards;
+﻿using System;
+using SimpleGPIO.Boards;
 
-namespace Game
+namespace LittleExplorers.Game
 {
     public static class Program
     {
         public static void Main()
         {
-            using (var pi = new RaspberryPi())
-            {
+            var pi = new RaspberryPi();
+            var game = new Game(pi);
+            game.Run();
 
-            }
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
     }
 }
