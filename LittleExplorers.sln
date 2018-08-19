@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Robot", "Robot\Robot.csproj", "{ACB06D10-16AB-4F21-80E1-17B6A236900A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game", "Game\Game.csproj", "{4EF653BB-4635-4717-BA1A-8A712997094A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game", "Game\Game.csproj", "{4EF653BB-4635-4717-BA1A-8A712997094A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
