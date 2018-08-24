@@ -21,7 +21,7 @@ namespace Robot.API
             motorDriver.TurnOn();
         }
 
-        public void GoForward() => _drive.RunFor(TimeSpan.FromSeconds(1));
+        public void GoForward() => _drive.RunFor(TimeSpan.FromSeconds(2));
 
         public void SpinFlag() => _flag.RunFor(TimeSpan.FromSeconds(1));
 

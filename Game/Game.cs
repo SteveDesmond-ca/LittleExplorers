@@ -41,7 +41,7 @@ namespace LittleExplorers.Game
             _score2 = pi.Pin38;
             _score3 = pi.Pin40;
 
-            _difficultyDial = new RotaryEncoder(pi.Pin35, pi.Pin37);
+            _difficultyDial = new RotaryEncoder(pi.Pin32, pi.Pin31);
             _random = new Random();
         }
 
@@ -69,6 +69,13 @@ namespace LittleExplorers.Game
             _score = 0;
             _difficulty = 1;
 
+            _cpuRed.TurnOnFor(TimeSpan.FromSeconds(0.5));
+            _cpuYellow.TurnOnFor(TimeSpan.FromSeconds(0.5));
+            _cpuGreen.TurnOnFor(TimeSpan.FromSeconds(0.5));
+            _score1.TurnOnFor(TimeSpan.FromSeconds(0.5));
+            _score2.TurnOnFor(TimeSpan.FromSeconds(0.5));
+            _score3.TurnOnFor(TimeSpan.FromSeconds(0.5));
+
             StartRound();
         }
 
@@ -85,7 +92,7 @@ namespace LittleExplorers.Game
             for (var flash = 0; flash < 5 * _difficulty; flash++)
             {
                 color = GetRandomColor();
-                ShowColorFor(color, TimeSpan.FromSeconds(0.5 / _difficulty));
+                ShowColorFor(color, TimeSpan.FromSeconds(1.0 / (3 * _difficulty)));
             }
             _currentColor = color;
         }
@@ -141,14 +148,15 @@ namespace LittleExplorers.Game
 
         private void PlayerWins()
         {
-            for (var flash = 0; flash < 3; flash++)
+            for (var flash = 0; flash < 4; flash++)
             {
-                _score1.TurnOnFor(TimeSpan.FromSeconds(0.5));
-                _score2.TurnOnFor(TimeSpan.FromSeconds(0.5));
-                _score3.TurnOnFor(TimeSpan.FromSeconds(0.5));
+                _score1.TurnOnFor(TimeSpan.FromSeconds(0.2));
+                _score2.TurnOnFor(TimeSpan.FromSeconds(0.2));
+                _score3.TurnOnFor(TimeSpan.FromSeconds(0.2));
             }
             _score = 0;
             SetScoreLights();
+            StartRound();
         }
 
         private void SetScoreLights()
