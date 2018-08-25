@@ -1,2 +1,2 @@
-# LittleExplorersRobot
-A simple robot controller for teaching kids to code
+# Little Explorers
+Simple robots for helping teach kids to code
