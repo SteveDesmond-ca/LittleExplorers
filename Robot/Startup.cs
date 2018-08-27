@@ -19,7 +19,6 @@ namespace Robot.API
         {
             services.AddMvc();
             services.AddSingleton<RaspberryPi>();
-            services.AddSingleton<IRobot, PiRobot>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
